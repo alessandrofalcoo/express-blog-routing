@@ -1,42 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// Index
-router.get('/', (req, res) => {
-  res.send('Lista dei post');
-});
-
-
-// Show
-router.get('/posts/:title', (req, res) => {
-  const postId = req.params.title
-  res.send('Return the post with id: ' + postId)
-})
-
-
-// Store
-router.post('/posts', (req, res) => {
-  res.send('Store a new post')
-})
-
-// Update
-
-router.put('/posts/:title', (req, res) => {
-  res.send('Update the post with a title with ' + req.params.title)
-})
-
-// Modify
-
-router.patch('/posts/:title', (req, res) => {
-  res.send('Modify the post with a title with ' + req.params.title)
-})
-
-// Delete
-
-router.delete('/posts/:title', (req, res) => {
-  res.send('Delete the post with a title of ' + req.params.title)
-});
-
 const posts = [
   {
     title: "Ciambellone",
@@ -81,5 +45,47 @@ const posts = [
     tags: ["Dolci", "Dolci al cioccolato", "Torte", "Ricette vegetariane", "Ricette al forno"],
   },
 ];
+
+
+// Index
+router.get('/', (req, res) => {
+  //res.send('Lista dei post');
+  res.json(posts);
+});
+
+
+// Show
+router.get('/posts/:title', (req, res) => {
+/*   const postId = req.params.title
+  res.send('Return the post with id: ' + postId)*/
+  for (let i = 0; i < posts.length; i++) {
+    const thisPost = posts[i];
+    res.json(thisPost)
+  }
+})
+
+
+// Store
+router.post('/posts', (req, res) => {
+  res.send('Store a new post')
+})
+
+// Update
+
+router.put('/posts/:title', (req, res) => {
+  res.send('Update the post with a title with ' + req.params.title)
+})
+
+// Modify
+
+router.patch('/posts/:title', (req, res) => {
+  res.send('Modify the post with a title with ' + req.params.title)
+})
+
+// Delete
+
+router.delete('/posts/:title', (req, res) => {
+  res.send('Delete the post with a title of ' + req.params.title)
+});
 
 module.exports = router;
