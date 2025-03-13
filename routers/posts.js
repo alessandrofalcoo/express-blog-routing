@@ -55,36 +55,38 @@ router.get('/', (req, res) => {
 
 
 // Show
-router.get('/posts/:title', (req, res) => {
-/*   const postId = req.params.title
-  res.send('Return the post with id: ' + postId)*/
-  for (let i = 0; i < posts.length; i++) {
-    const thisPost = posts[i];
-    res.json(thisPost)
-  }
+router.get('/:slug', (req, res) => {
+  const postSlug = req.params.slug
+  posts.find((thisPost) => {
+    if(thisPost.slug === postSlug){
+      res.json(thisPost);
+    }
+  })
+/*   res.send('Return the post with id: ' + postSlug)
+ */  /* res.json(postSlug) */
 })
 
 
 // Store
-router.post('/posts', (req, res) => {
+router.post('/', (req, res) => {
   res.send('Store a new post')
 })
 
 // Update
 
-router.put('/posts/:title', (req, res) => {
+router.put('/:slug', (req, res) => {
   res.send('Update the post with a title with ' + req.params.title)
 })
 
 // Modify
 
-router.patch('/posts/:title', (req, res) => {
+router.patch('/:slug', (req, res) => {
   res.send('Modify the post with a title with ' + req.params.title)
 })
 
 // Delete
 
-router.delete('/posts/:title', (req, res) => {
+router.delete('/:slug', (req, res) => {
   res.send('Delete the post with a title of ' + req.params.title)
 });
 

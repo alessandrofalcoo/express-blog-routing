@@ -8,6 +8,6 @@ app.listen(port, () => {
 
 });
 
-app.use('/posts', postsRouter)
+app.use('/posts', postsRouter);
 
 
