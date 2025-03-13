@@ -75,19 +75,19 @@ router.post('/', (req, res) => {
 // Update
 
 router.put('/:slug', (req, res) => {
-  res.send('Update the post with a title with ' + req.params.title)
+  res.send('Update the post with a title with ' + req.params.slug)
 })
 
 // Modify
 
 router.patch('/:slug', (req, res) => {
-  res.send('Modify the post with a title with ' + req.params.title)
+  res.send('Modify the post with a title with ' + req.params.slug)
 })
 
 // Delete
 
 router.delete('/:slug', (req, res) => {
-  res.send('Delete the post with a title of ' + req.params.title)
+  res.send('Delete the post with a title of ' + req.params.slug)
 });
 
 module.exports = router;
